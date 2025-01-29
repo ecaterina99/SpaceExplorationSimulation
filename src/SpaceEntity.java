@@ -56,24 +56,6 @@ public abstract class SpaceEntity {
     }
 
 
-
-
-
-
-    public void addSpaceEntity() {
-    }
-
-        public void displaySpaceEntities(Set<SpaceEntity> spaceEntities) {
-            if (spaceEntities.isEmpty()) {
-                System.out.println("No space entities found.");
-            } else {
-                System.out.println("Space entities:");
-                for (SpaceEntity eachSpaceEntity : spaceEntities) {
-                    System.out.println(eachSpaceEntity.getDescription());
-                }
-            }
-        }
-
 }
 
 
