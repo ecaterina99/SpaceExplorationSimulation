@@ -22,29 +22,20 @@ public class SpaceExplorationSimulation {
 
         options.forEach((key, value) -> System.out.println(value + ": " + key));
 
-        List<Astronaut> astronauts = new ArrayList<>();
-        Astronaut astronaut = new Astronaut();
-
-
-        Set<SpaceEntity> spaceEntities = new HashSet<>();
-        Planet planet = new Planet();
-        Star star = new Star();
-        Asteroid asteroid = new Asteroid();
-        spaceEntities.add(asteroid);
-        spaceEntities.add(planet);
-        spaceEntities.add(star);
+        MissionControl missionControl = new MissionControl();
+        SpaceObservatory spaceObservatory = new SpaceObservatory();
 
 
         System.out.println("Enter your choice:");
         Scanner scanner = new Scanner(System.in);
         int userInput = scanner.nextInt();
 
-        selectOption(userInput, astronauts, astronaut, spaceEntities);
+        selectOption(userInput, missionControl,spaceObservatory);
         while (userInput != 0) {
             System.out.println("Enter your choice:");
             try {
                 userInput = scanner.nextInt();
-                selectOption(userInput, astronauts, astronaut, spaceEntities);
+                selectOption(userInput, missionControl,spaceObservatory);
             } catch (InputMismatchException e) {
                 System.err.println("Invalid input. Please enter a number.");
                 scanner.next();
@@ -53,19 +44,16 @@ public class SpaceExplorationSimulation {
     }
 
 
-    public static void selectOption(int userInput, List<Astronaut> astronauts, Astronaut astronaut, Set<SpaceEntity> spaceEntities) {
+    public static void selectOption(int userInput, MissionControl missionControl, SpaceObservatory spaceObservatory) {
         switch (userInput) {
 
-            case 1 -> astronaut.addAstronaut(astronauts, new Astronaut());
+            case 1 -> missionControl.addAstronaut();
 
-            case 2 -> System.out.println("  ");
-            case 3 ->  System.out.println(" ");
+            case 2 -> spaceObservatory.addSpaceEntity();
+            case 3 -> System.out.println(" ");
 
-            case 4 -> astronaut.displayAstronauts(astronauts);
-
-            case 5 ->  {
-                System.out.println("  ");
-            }
+            case 4 -> missionControl.displayAstronauts();
+            case 5 -> spaceObservatory.displaySpaceEntities();
 
             case 0 -> System.out.println("Exiting the program. Goodbye!");
 
