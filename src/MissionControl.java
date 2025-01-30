@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class MissionControl {
     List<Astronaut> astronauts = new ArrayList<>();
 
@@ -74,7 +75,23 @@ public class MissionControl {
         for (Astronaut eachAstronaut : astronautsByNationality) {
             System.out.println(eachAstronaut);
         }
-
     }
 
+    public void checkAstronaut() {
+        System.out.println("Please, select astronaut name: ");
+        String searchAstronaut;
+        Scanner input = new Scanner(System.in);
+        searchAstronaut = input.nextLine();
+        int cnt =0;
+
+        for (Astronaut eachAstronaut : astronauts) {
+            if (eachAstronaut.getName().contains(searchAstronaut)) {
+                System.out.println(searchAstronaut + " is in the list.");
+                cnt++;
+            }
+        }
+        if(cnt<1){
+            System.out.println("Astronaut is not in the list.");
+        }
+    }
 }
