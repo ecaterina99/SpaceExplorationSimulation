@@ -6,54 +6,80 @@ public class SpaceObservatory {
 
     Set<SpaceEntity> spaceEntities = new HashSet<>();
 
-
-    public void addSpaceEntity(){
-
+    public void addSpaceEntity() {
         System.out.println("Enter Space Entity Type (Planet/Star/Asteroid):");
-        Scanner sc = new Scanner(System.in);
-        String type = sc.nextLine();
+        Scanner input = new Scanner(System.in);
+        String type = input.nextLine();
 
-        switch (type) {
-            case "Planet" -> {
+        switch (type.toLowerCase()) {
+            case "planet" -> {
                 Planet planet = new Planet();
 
-                System.out.println("Please, add planet name: ");
-                Scanner input = new Scanner(System.in);
+                System.out.println("Enter the planet name: ");
                 planet.setName(input.nextLine());
 
-                System.out.println("Please, add distance from Earth: ");
-                planet.setName(input.nextLine());
-                sc.nextLine();
+                System.out.println("Enter Distance from Earth (in light-years): ");
+                planet.setDistanceFromEarth(Double.parseDouble(input.nextLine()));
 
-                System.out.println("Enter the number of moons");
+                System.out.println("Enter Discovered By: ");
+                planet.setDiscoveredBy(input.nextLine());
+
+                System.out.println("Enter Discovery Year: ");
+                planet.setDiscoveryYear(input.nextInt());
+                input.nextLine();
+
+                System.out.println("Enter the number of moons:");
                 planet.setNumMoons(input.nextInt());
-                sc.nextLine();
+                input.nextLine();
 
                 this.spaceEntities.add(planet);
             }
-            case "Star" -> {
+            case "star" -> {
                 Star star = new Star();
 
                 System.out.println("Please, add star name: ");
-                Scanner input = new Scanner(System.in);
                 star.setName(input.nextLine());
 
                 System.out.println("Please, add distance from Earth: ");
-                star.setName(input.nextLine());
-                sc.nextLine();
+                star.setDistanceFromEarth(Double.parseDouble(input.nextLine()));
+
+                System.out.println("Enter temperature: ");
+                star.setTemperature(Double.parseDouble(input.nextLine()));
+
+                System.out.println("Enter star type: ");
+                star.setStarType(input.nextLine());
+
+                System.out.println("Enter Discovered By: ");
+                star.setDiscoveredBy(input.nextLine());
+
+                System.out.println("Enter Discovery Year: ");
+                star.setDiscoveryYear(input.nextInt());
+                input.nextLine();
 
                 this.spaceEntities.add(star);
             }
-            case "Asteroid" -> {
+            case "asteroid" -> {
                 Asteroid asteroid = new Asteroid();
 
                 System.out.println("Please, add asteroid name: ");
-                Scanner input = new Scanner(System.in);
                 asteroid.setName(input.nextLine());
 
                 System.out.println("Please, add distance from Earth: ");
-                asteroid.setName(input.nextLine());
-                sc.nextLine();
+                asteroid.setDistanceFromEarth(Double.parseDouble(input.nextLine()));
+
+                System.out.println("Enter the size: ");
+                asteroid.setSize(input.nextInt());
+                input.nextLine();
+
+                System.out.println("Enter the composition: ");
+                asteroid.setComposition(input.nextLine());
+
+                System.out.println("Enter Discovered By: ");
+                asteroid.setDiscoveredBy(input.nextLine());
+
+                System.out.println("Enter Discovery Year: ");
+                asteroid.setDiscoveryYear(input.nextInt());
+                input.nextLine();
 
                 this.spaceEntities.add(asteroid);
             }
@@ -62,13 +88,15 @@ public class SpaceObservatory {
 
     }
 
-    public void displaySpaceEntities(){
+    public void displaySpaceEntities() {
         if (this.spaceEntities.isEmpty()) {
             System.out.println("No space entities found.");
         } else {
             System.out.println("Space entities:");
             for (SpaceEntity eachSpaceEntity : this.spaceEntities) {
                 System.out.println(eachSpaceEntity.getDescription());
+                System.out.println(eachSpaceEntity.getDiscoveryInfo());
+
             }
         }
     }
