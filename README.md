@@ -26,7 +26,7 @@ Create a Java application that simulates a **Space Exploration Mission**. The sy
     - Method: `int getDangerLevel()`.
 - **Child Classes**:
   - `Planet` (extends `SpaceEntity`, implements `Explorable`):
-    - Attributes: `habitable` (boolean), `numMoons` (int).
+    - Attributes: `habitable` (boolean) - a random boolean value, `numMoons` (int).
     - Methods:
       - Implement `getDescription()`.
       - Implement `explore()`.
