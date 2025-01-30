@@ -18,12 +18,16 @@ public class Star extends SpaceEntity {
         return starType;
     }
 
-    public String getStarClassification(int temperature) {
+    public String getStarClassification() {
         return "Star Classification";
     }
 
     @Override
     public String getDescription() {
         return "Star name:" + getName() + ". Distance from Earth: " + getDistanceFromEarth() + ". Star type: " + getStarType() + ". Temperature:" + getTemperature();
+    }
+    @Override
+    public String getDiscoveryInfo() {
+        return "Discovered By: " + getDiscoveredBy() + ". Discovery year: " + getDiscoveryYear();
     }
 }
