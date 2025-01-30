@@ -1,9 +1,4 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
-
-
+import java.util.*;
 public class MissionControl {
     List<Astronaut> astronauts = new ArrayList<>();
 
@@ -18,8 +13,23 @@ public class MissionControl {
         astronaut.setAge(sc.nextInt());
         sc.nextLine();
 
-        System.out.println("Please, add astronaut nationality: ");
-        astronaut.setNationality(sc.nextLine());
+        System.out.println("Please, select astronaut nationality: ");
+        System.out.println(Arrays.toString(Astronaut.AllowedNationality.values()));
+        Astronaut.AllowedNationality nationality = Astronaut.AllowedNationality.valueOf(Astronaut.AllowedNationality.class, sc.nextLine().toUpperCase());
+
+        switch (nationality) {
+
+            case AMERICAN -> astronaut.setNationality(Astronaut.AllowedNationality.AMERICAN);
+
+            case ITALIAN -> astronaut.setNationality(Astronaut.AllowedNationality.ITALIAN);
+
+            case RUSSIAN -> astronaut.setNationality(Astronaut.AllowedNationality.RUSSIAN);
+
+            case MOLDAVIAN -> astronaut.setNationality(Astronaut.AllowedNationality.MOLDAVIAN);
+
+            default -> System.out.println("The type is incorrect");
+
+        }
 
         System.out.println("Please, add astronaut years of experience: ");
         astronaut.setYearsOfExperience(sc.nextInt());
@@ -41,5 +51,30 @@ public class MissionControl {
         }
     }
 
+    public void filterAstronautsByNationality() {
+
+        System.out.println("Please, select the nationality: ");
+        Scanner input = new Scanner(System.in);
+        String nationality = input.nextLine();
+        Astronaut.AllowedNationality searchedNationality;
+        switch (nationality.toLowerCase()) {
+            case "american" -> searchedNationality = Astronaut.AllowedNationality.AMERICAN;
+            case "italian" -> searchedNationality = Astronaut.AllowedNationality.ITALIAN;
+            case "russian" -> searchedNationality = Astronaut.AllowedNationality.RUSSIAN;
+            case "moldavian" -> searchedNationality = Astronaut.AllowedNationality.MOLDAVIAN;
+            default -> {
+                System.out.println("The type is incorrect");
+                return;
+            }
+        }
+
+        List<Astronaut> astronautsByNationality = astronauts.stream()
+                .filter(astronaut -> astronaut.getNationality() == searchedNationality)
+                .toList();
+        for (Astronaut eachAstronaut : astronautsByNationality) {
+            System.out.println(eachAstronaut);
+        }
+
+    }
 
 }
