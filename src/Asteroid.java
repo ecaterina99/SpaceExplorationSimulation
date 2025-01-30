@@ -20,7 +20,7 @@ public class Asteroid extends SpaceEntity implements Hazardous {
 
     @Override
     public String getDescription() {
-        return "";
+        return "Asteroid name:" + getName() + ". Distance from Earth: " + getDistanceFromEarth() + ". Asteroid size: " + getSize() + ". Composition:" + getComposition();
     }
 
     @Override
@@ -33,12 +33,12 @@ public class Asteroid extends SpaceEntity implements Hazardous {
         return 0;
     }
 
-    public boolean isPotentiallyHazardous(int size) {
-        if (getSize() > 1) {
-            return true;
-        }
-        return false;
+    public boolean isPotentiallyHazardous() {
+        return getSize() > 1;
     }
 
-
+    @Override
+    public String getDiscoveryInfo() {
+        return "Discovered By: " + getDiscoveredBy() + ". Discovery year: " + getDiscoveryYear();
+    }
 }
