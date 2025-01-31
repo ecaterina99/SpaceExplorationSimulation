@@ -5,7 +5,6 @@ public abstract class SpaceEntity {
     private double distanceFromEarth;
     private String discoveredBy;
     private int discoveryYear;
-    public String typeEntity;
 
     public SpaceEntity() {
     }
@@ -51,10 +50,18 @@ public abstract class SpaceEntity {
 
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        SpaceEntity spaceEntity = (SpaceEntity) obj;
+        return Objects.equals(this.getName(), spaceEntity.getName())
+                && Objects.equals(this.getDistanceFromEarth(), spaceEntity.getDistanceFromEarth());
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(name, distanceFromEarth);
     }
-
 
 }
 
