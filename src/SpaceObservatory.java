@@ -5,32 +5,33 @@ import java.util.Set;
 public class SpaceObservatory {
 
     Set<SpaceEntity> spaceEntities = new HashSet<>();
+    Scanner userInput = new Scanner(System.in);
+
 
     public void addSpaceEntity() {
         System.out.println("Enter Space Entity Type (Planet/Star/Asteroid):");
-        Scanner input = new Scanner(System.in);
-        String type = input.nextLine();
+        String type = userInput.nextLine();
 
         switch (type.toLowerCase()) {
             case "planet" -> {
                 Planet planet = new Planet();
 
                 System.out.println("Enter the planet name: ");
-                planet.setName(input.nextLine());
+                planet.setName(userInput.nextLine());
 
                 System.out.println("Enter Distance from Earth (in light-years): ");
-                planet.setDistanceFromEarth(Double.parseDouble(input.nextLine()));
+                planet.setDistanceFromEarth(Double.parseDouble(userInput.nextLine()));
 
                 System.out.println("Enter Discovered By: ");
-                planet.setDiscoveredBy(input.nextLine());
+                planet.setDiscoveredBy(userInput.nextLine());
 
                 System.out.println("Enter Discovery Year: ");
-                planet.setDiscoveryYear(input.nextInt());
-                input.nextLine();
+                planet.setDiscoveryYear(userInput.nextInt());
+                userInput.nextLine();
 
                 System.out.println("Enter the number of moons:");
-                planet.setNumMoons(input.nextInt());
-                input.nextLine();
+                planet.setNumMoons(userInput.nextInt());
+                userInput.nextLine();
 
                 this.spaceEntities.add(planet);
             }
@@ -38,23 +39,23 @@ public class SpaceObservatory {
                 Star star = new Star();
 
                 System.out.println("Please, add star name: ");
-                star.setName(input.nextLine());
+                star.setName(userInput.nextLine());
 
                 System.out.println("Please, add distance from Earth: ");
-                star.setDistanceFromEarth(Double.parseDouble(input.nextLine()));
+                star.setDistanceFromEarth(Double.parseDouble(userInput.nextLine()));
 
                 System.out.println("Enter temperature: ");
-                star.setTemperature(Double.parseDouble(input.nextLine()));
+                star.setTemperature(Double.parseDouble(userInput.nextLine()));
 
                 System.out.println("Enter star type: ");
-                star.setStarType(input.nextLine());
+                star.setStarType(userInput.nextLine());
 
                 System.out.println("Enter Discovered By: ");
-                star.setDiscoveredBy(input.nextLine());
+                star.setDiscoveredBy(userInput.nextLine());
 
                 System.out.println("Enter Discovery Year: ");
-                star.setDiscoveryYear(input.nextInt());
-                input.nextLine();
+                star.setDiscoveryYear(userInput.nextInt());
+                userInput.nextLine();
 
                 this.spaceEntities.add(star);
             }
@@ -62,24 +63,24 @@ public class SpaceObservatory {
                 Asteroid asteroid = new Asteroid();
 
                 System.out.println("Please, add asteroid name: ");
-                asteroid.setName(input.nextLine());
+                asteroid.setName(userInput.nextLine());
 
                 System.out.println("Please, add distance from Earth: ");
-                asteroid.setDistanceFromEarth(Double.parseDouble(input.nextLine()));
+                asteroid.setDistanceFromEarth(Double.parseDouble(userInput.nextLine()));
 
                 System.out.println("Enter the size: ");
-                asteroid.setSize(input.nextInt());
-                input.nextLine();
+                asteroid.setSize(userInput.nextInt());
+                userInput.nextLine();
 
                 System.out.println("Enter the composition: ");
-                asteroid.setComposition(input.nextLine());
+                asteroid.setComposition(userInput.nextLine());
 
                 System.out.println("Enter Discovered By: ");
-                asteroid.setDiscoveredBy(input.nextLine());
+                asteroid.setDiscoveredBy(userInput.nextLine());
 
                 System.out.println("Enter Discovery Year: ");
-                asteroid.setDiscoveryYear(input.nextInt());
-                input.nextLine();
+                asteroid.setDiscoveryYear(userInput.nextInt());
+                userInput.nextLine();
 
                 this.spaceEntities.add(asteroid);
             }
@@ -101,4 +102,57 @@ public class SpaceObservatory {
         }
     }
 
+    public void exploreSpaceEntities() {
+        System.out.println("Enter Space Entity Type for exploration(Planet/Asteroid):");
+        String typeOfEntity = userInput.nextLine();
+        switch (typeOfEntity.toLowerCase()) {
+            case "planet" -> {
+                Planet planet = new Planet();
+                System.out.println("Enter the planet name: ");
+                planet.setName(userInput.nextLine());
+                System.out.println(planet.explore());
+            }
+            case "asteroid" -> {
+                Asteroid asteroid = new Asteroid();
+                System.out.println("Enter the asteroid name: ");
+                asteroid.setName(userInput.nextLine());
+                System.out.println(asteroid.explore());
+            }
+            default -> System.out.println("Exploration is impossible. Please, select a Planet/Asteroid.");
+        }
+    }
+
+    public void getAsteroidDangerLevel() {
+        System.out.println("Enter the asteroid name: ");
+        Asteroid asteroid = new Asteroid();
+        asteroid.setName(userInput.nextLine());
+        System.out.println("Enter asteroid size: ");
+        asteroid.setSize(userInput.nextInt());
+        System.out.println(asteroid.getDangerLevel());
+    }
+
+    public void supportsLife() {
+        Planet planet = new Planet();
+        System.out.println("Enter planet name: ");
+        planet.setName(userInput.nextLine());
+        System.out.println("Enter the number of moons: ");
+        planet.setNumMoons(userInput.nextInt());
+        userInput.nextLine();
+        System.out.println(planet.canSupportLife());
+    }
+
+
+    public void getStarClassification() {
+        Star star = new Star();
+        System.out.println("Enter star name: ");
+        star.setName(userInput.nextLine());
+        System.out.println("Enter star temperature: ");
+        star.setTemperature(userInput.nextDouble());
+        userInput.nextLine();
+
+        System.out.println(star.getStarClassification());
+
+    }
+
 }
+

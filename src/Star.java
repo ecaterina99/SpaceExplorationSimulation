@@ -1,3 +1,4 @@
+
 public class Star extends SpaceEntity {
     private double temperature;
     private String starType;
@@ -19,13 +20,21 @@ public class Star extends SpaceEntity {
     }
 
     public String getStarClassification() {
-        return "Star Classification";
+        if (this.temperature < 3.5000) {
+            this.starType = "Cool Stars(RED)";
+        } else if (this.temperature > 3.5000 && this.temperature < 7.5000) {
+            this.starType = "Medium-Temperature Stars (Yellow & Orange)";
+        } else {
+            this.starType = "Hot Stars (Blue & White)";
+        }
+        return "The star " + this.getName() + " takes a part of " + getStarType();
     }
 
     @Override
     public String getDescription() {
-        return "Star name:" + getName() + ". Distance from Earth: " + getDistanceFromEarth() + ". Star type: " + getStarType() + ". Temperature:" + getTemperature();
+        return "Star name:" + getName() + ". Distance from Earth: " + getDistanceFromEarth() + ". Star type: " + getStarType() + ". Temperature:" + getTemperature()+ ". Star classification: " + getStarClassification();
     }
+
     @Override
     public String getDiscoveryInfo() {
         return "Discovered By: " + getDiscoveredBy() + ". Discovery year: " + getDiscoveryYear();

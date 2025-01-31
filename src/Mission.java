@@ -4,14 +4,11 @@ public class Mission {
     private String crewList;
     private int missionDuration;
 
-    public Mission(int missionCode, String destinationPlanet, String crewList, int missionDuration) {
-        this.missionCode = missionCode;
-        this.destinationPlanet = destinationPlanet;
-        this.crewList = crewList;
-        this.missionDuration = missionDuration;
+    public Mission() {
     }
 
     public void setMissionCode(int missionCode) {
+
         this.missionCode = missionCode;
     }
 
@@ -42,6 +39,7 @@ public class Mission {
     public int getMissionDuration() {
         return missionDuration;
     }
+
 
     public boolean isLongTermMission(int missionDuration) {
         if (getMissionDuration() > 365) {

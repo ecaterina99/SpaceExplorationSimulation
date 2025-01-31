@@ -4,12 +4,12 @@ public class Astronaut {
     private int age;
     private AllowedNationality nationality;
     private int yearsOfExperience;
+
     public enum AllowedNationality {MOLDAVIAN, AMERICAN, ITALIAN, RUSSIAN}
 
     public Astronaut() {
         super();
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -43,16 +43,14 @@ public class Astronaut {
         return yearsOfExperience;
     }
 
+    public boolean isEligibleForMission() {
+        return getYearsOfExperience() >= 5;
+    }
 
     @Override
     public String toString() {
-        return "Astronaut name: " + getName() + ", astronaut age: " + getAge() + ", astronaut nationality: " + getNationality() + ", astronaut years of experience: " + getYearsOfExperience();
+        return "Astronaut name: " + getName() + ", astronaut age: " + getAge() + ", astronaut nationality: " + getNationality() + ", astronaut years of experience: " + getYearsOfExperience() + ". Is he eligible for mission? " + isEligibleForMission();
     }
 
-    public boolean isEligibleForMission(int yearsOfExperience) {
-        if (getYearsOfExperience() >= 5) {
-            return true;
-        }
-        return false;
-    }
+
 }

@@ -134,6 +134,8 @@ Create a Java application that simulates a **Space Exploration Mission**. The sy
 
 13.Extract Mission Codes
 
+14.Check if a specific astronaut is in the list
+
 0.Exit
 
 Enter your choice: 2

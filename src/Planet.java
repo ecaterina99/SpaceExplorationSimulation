@@ -2,6 +2,11 @@ public class Planet extends SpaceEntity implements Explorable {
     private boolean habitable;
     private int numMoons;
 
+    public Planet() {
+        super();
+        setHabitable(Math.random() < 0.5);
+    }
+
     public void setHabitable(boolean habitable) {
         this.habitable = habitable;
     }
@@ -18,16 +23,16 @@ public class Planet extends SpaceEntity implements Explorable {
         return numMoons;
     }
 
-    public boolean canSupportLife(int numMoons) {
-        if (getNumMoons() >= 1) {
-            return this.habitable = true;
-        }
-        return this.habitable = false;
+    public boolean canSupportLife() {
+        System.out.println(this.getName() + " can support life? ");
+        return getNumMoons() >= 1 && this.habitable;
     }
 
     @Override
     public String explore() {
-        return "";
+        return "Welcome to Planet Exploration! Planet name: " + this.getName() +
+                ". Initial scans detected traces of water beneath the surface " +
+                "and atmospheric elements hinting at the possibility of microbial life.";
     }
 
     @Override
