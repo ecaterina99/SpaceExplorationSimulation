@@ -26,7 +26,7 @@ Create a Java application that simulates a **Space Exploration Mission**. The sy
     - Method: `int getDangerLevel()`.
 - **Child Classes**:
   - `Planet` (extends `SpaceEntity`, implements `Explorable`):
-    - Attributes: `habitable` (boolean), `numMoons` (int).
+    - Attributes: `habitable` (boolean) - a random boolean value, `numMoons` (int).
     - Methods:
       - Implement `getDescription()`.
       - Implement `explore()`.
@@ -139,21 +139,34 @@ Create a Java application that simulates a **Space Exploration Mission**. The sy
 0.Exit
 
 Enter your choice: 2
+
 Enter Space Entity Type (Planet/Star/Asteroid): Planet
+
 Enter Name: Mars
+
 Enter Distance from Earth (in light-years): 0.000024
+
 Enter Discovered By: NASA
+
 Enter Discovery Year: 1965
+
 Is the planet habitable? (true/false): false
+
 Enter Number of Moons: 2
+
 Space Entity added successfully!
 
 Enter your choice: 10
+
 Enter Planet Name: Mars
+
 Can Mars support life? false
 
+
 Enter your choice: 11
+
 Enter Star Name: Sun
+
 Star Classification of Sun: Yellow Dwarf
 
 Enter your choice: 13
